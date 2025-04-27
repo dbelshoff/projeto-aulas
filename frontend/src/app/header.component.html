@@ -1,0 +1,26 @@
+<header class="header">
+  <nav class="nav-container">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/mensagens']"
+          routerLinkActive="active"
+          >Mensagens</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/autenticacao']"
+          routerLinkActive="active"
+          >Autenticação</a
+        >
+      </li>
+    </ul>
+
+    <div class="userLogado" *ngIf="email">
+      <p>Olá, você está logado como {{ email }}.</p>
+    </div>
+  </nav>
+</header>

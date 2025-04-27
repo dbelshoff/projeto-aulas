@@ -1,0 +1,29 @@
+<article class="panel panel-default" [ngStyle]="{}">
+  <div class="panel-body">
+    <div *ngIf="isEditing; else displayContent">
+      <input
+        type="text"
+        [(ngModel)]="editedMessageContent"
+        class="form-control"
+        placeholder="Edite sua mensagem"
+      />
+    </div>
+    <ng-template #displayContent>
+      {{ messageClassContent }}
+    </ng-template>
+  </div>
+
+  <footer class="panel-footer">
+    <div class="author">
+      {{ messageClassUser }}
+    </div>
+    <div class="config" *ngIf="isOwnerOfMessage()">
+      <a (click)="onEdit()">Edit</a>
+      <a (click)="onDelete()">Delete</a>
+
+      <button *ngIf="isEditing" class="btn btn-success" (click)="saveEdits()">
+        Save Changes
+      </button>
+    </div>
+  </footer>
+</article>

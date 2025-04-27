@@ -1,0 +1,62 @@
+/* Estilo do título */
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Espaçamento extra para o header */
+.row-spacing {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Container do nav */
+nav.col-md-8.col-md-offset-2 {
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo da lista */
+ul.nav-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 0;
+  list-style: none;
+}
+
+/* Estilo dos itens da lista */
+ul.nav-tabs li {
+  display: inline-block;
+}
+
+/* Estilo dos links */
+.nav-link {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #555;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilo quando o link está ativo */
+.nav-link.active,
+.nav-link:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Ajuste para routerLinkActive */
+a.active {
+  background-color: #007bff;
+  color: white;
+}

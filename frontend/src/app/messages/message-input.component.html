@@ -1,0 +1,26 @@
+﻿<div class="col-md-8 col-md-offset-2">
+  <form (ngSubmit)="onSubmit(refLocalForm)" #refLocalForm="ngForm">
+    <div class="form-group">
+      <label for="myContent">Conteúdo</label>
+      <input
+        type="text"
+        id="myContent"
+        class="form-control"
+        ngModel
+        name="myContent"
+        required
+        oninvalid="this.setCustomValidity('Campo Vazio')"
+        oninput="setCustomValidity('')"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar mensagem</button>
+
+    <div *ngIf="errorMessage" class="alert alert-danger mt-2">
+      {{ errorMessage }}
+      <br />
+      <a [routerLink]="['/autenticacao/signin']" class="btn btn-link"
+        >Clique aqui para fazer login</a
+      >
+    </div>
+  </form>
+</div>

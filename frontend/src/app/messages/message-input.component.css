@@ -1,0 +1,60 @@
+/* Estilo geral do container */
+.col-md-8.col-md-offset-2 {
+  max-width: 600px;
+  margin: 50px auto; /* centraliza */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do form */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo do grupo de formulário */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Estilo do label */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilo do input */
+input.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilo do botão */
+button.btn.btn-primary {
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.btn.btn-primary:hover {
+  background-color: #0056b3;
+}
