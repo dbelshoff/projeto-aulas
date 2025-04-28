@@ -17,7 +17,7 @@
     }
 
     <div class="form-group">
-      <label for="lastName">SobreNome:</label>
+      <label for="lastName">Sobrenome:</label>
       <input
         type="text"
         id="lastName"
@@ -73,6 +73,17 @@
     myForm.get('passwordTS')?.touched) {
     <div><p style="color: red">Senha obrigatória.</p></div>
     }
+    
+    <div class="upload-container">
+      <label for="fileInput" class="upload-label">
+        Escolher Imagem
+      </label>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
+
+      <div *ngIf="previewUrl" class="preview-container">
+        <img [src]="previewUrl" alt="Preview da Imagem" class="preview-image">
+      </div>
+    </div>
 
     <br />
     <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">

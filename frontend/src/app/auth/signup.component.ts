@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   FormControl,
   FormGroup,
@@ -12,10 +13,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
   templateUrl: './signup.component.html',
+  styleUrl: './signup.component.css'
 })
 export class SignupComponent implements OnInit {
+  selectedFile: File | null = null;
+  previewUrl: string | ArrayBuffer | null = null;
   myForm!: FormGroup;
 
   constructor(private authService: AuthService, private router: Router) {}
@@ -34,6 +38,19 @@ export class SignupComponent implements OnInit {
       ]),
       passwordTS: new FormControl(null, Validators.required),
     });
+  }
+
+
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+
+    if (this.selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.previewUrl = reader.result;
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
   }
 
   onSubmit() {
