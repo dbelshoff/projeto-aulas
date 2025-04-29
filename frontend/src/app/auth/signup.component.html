@@ -95,6 +95,13 @@
       </form>
     </div>
     
+
+    <label for="nacionalidade">Nacionalidade:</label>
+    <select id="nacionalidade" [(ngModel)]="nacionalidadeSelecionada" name="nacionalidade">
+      <option value="" disabled selected>Selecione sua nacionalidade</option>
+      <option *ngFor="let pais of nacionalidades" [value]="pais">{{ pais }}</option>
+    </select>
+  
     <div class="upload-container">
       <label for="fileInput" class="upload-label">
       Escolha sua imagem de perfil

@@ -24,6 +24,17 @@ export class SignupComponent implements OnInit {
   myForm!: FormGroup;
   sexoSelecionado: string = '';
 
+  nacionalidadeSelecionada: string = '';
+
+  nacionalidades: string[] = [
+    'Brasileiro',
+    'Americano',
+    'Argentino',
+    'Português',
+    'Espanhol',
+    'Outro'
+  ];
+
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
