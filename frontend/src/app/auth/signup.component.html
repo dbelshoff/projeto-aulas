@@ -73,15 +73,37 @@
     myForm.get('passwordTS')?.touched) {
     <div><p style="color: red">Senha obrigatória.</p></div>
     }
+
+    <div>
+      <form>
+        <label>
+          <input type="radio" name="sexo" [(ngModel)]="sexoSelecionado" value="Masculino">
+          Masculino
+        </label>
+        <br>
+      
+        <label>
+          <input type="radio" name="sexo" [(ngModel)]="sexoSelecionado" value="Feminino">
+          Feminino
+        </label>
+        <br>
+      
+        <label>
+          <input type="radio" name="sexo" [(ngModel)]="sexoSelecionado" value="Prefiro não dizer">
+          Prefiro não dizer
+        </label>
+      </form>
+    </div>
     
     <div class="upload-container">
       <label for="fileInput" class="upload-label">
-        Escolher Imagem
+      Escolha sua imagem de perfil
       </label>
       <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
 
       <div *ngIf="previewUrl" class="preview-container">
         <img [src]="previewUrl" alt="Preview da Imagem" class="preview-image">
+        <p style="color: green;"> Imagem Escolhida!</p>
       </div>
     </div>
 

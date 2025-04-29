@@ -5,6 +5,7 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
+  FormsModule
 } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
+  imports: [ReactiveFormsModule, HttpClientModule, CommonModule, FormsModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
@@ -21,6 +22,7 @@ export class SignupComponent implements OnInit {
   selectedFile: File | null = null;
   previewUrl: string | ArrayBuffer | null = null;
   myForm!: FormGroup;
+  sexoSelecionado: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
