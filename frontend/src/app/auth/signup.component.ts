@@ -18,12 +18,13 @@ import { Router } from '@angular/router';
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
+
 export class SignupComponent implements OnInit {
   selectedFile: File | null = null;
   previewUrl: string | ArrayBuffer | null = null;
   myForm!: FormGroup;
   sexoSelecionado: string = '';
-
+  aceitouTermos: boolean = false;
   nacionalidadeSelecionada: string = '';
 
   nacionalidades: string[] = [

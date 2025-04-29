@@ -1,5 +1,5 @@
 <h1>SIGN UP</h1>
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-8 col-md-offset-2" id="page">
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="firstName">Nome:</label>
@@ -101,22 +101,27 @@
       <option value="" disabled selected>Selecione sua nacionalidade</option>
       <option *ngFor="let pais of nacionalidades" [value]="pais">{{ pais }}</option>
     </select>
-  
-    <div class="upload-container">
-      <label for="fileInput" class="upload-label">
-      Escolha sua imagem de perfil
-      </label>
-      <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
 
-      <div *ngIf="previewUrl" class="preview-container">
-        <img [src]="previewUrl" alt="Preview da Imagem" class="preview-image">
-        <p style="color: green;"> Imagem Escolhida!</p>
-      </div>
-    </div>
+    <label>
+      <input type="checkbox" [(ngModel)]="aceitouTermos" name="aceitouTermos">
+      Aceito os termos de uso
+    </label>
 
     <br />
     <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">
       Cadastrar
     </button>
   </form>
+
+  <div class="upload-container">
+    <label for="fileInput" class="upload-label">
+    Escolha sua imagem de perfil
+    </label>
+    <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
+
+    <div *ngIf="previewUrl" class="preview-container">
+      <img [src]="previewUrl" alt="Preview da Imagem" class="preview-image">
+      <p style="color: green;"> Imagem Escolhida!</p>
+    </div>
+  </div>
 </div>
