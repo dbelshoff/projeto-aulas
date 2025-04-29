@@ -74,36 +74,30 @@
     <div><p style="color: red">Senha obrigatória.</p></div>
     }
 
-    <div>
-      <form>
-        <label>
-          <input type="radio" name="sexo" [(ngModel)]="sexoSelecionado" value="Masculino">
-          Masculino
-        </label>
-        <br>
-      
-        <label>
-          <input type="radio" name="sexo" [(ngModel)]="sexoSelecionado" value="Feminino">
-          Feminino
-        </label>
-        <br>
-      
-        <label>
-          <input type="radio" name="sexo" [(ngModel)]="sexoSelecionado" value="Prefiro não dizer">
-          Prefiro não dizer
-        </label>
-      </form>
-    </div>
+    <label>
+      <input type="radio" formControlName="sexoTS" value="Masculino" name="sexo">
+      Masculino
+    </label><br>
+    
+    <label>
+      <input type="radio" formControlName="sexoTS" value="Feminino" name="sexo">
+      Feminino
+    </label><br>
+    
+    <label>
+      <input type="radio" formControlName="sexoTS" value="Prefiro não dizer" name="sexo">
+      Prefiro não dizer
+    </label><br>
     
 
     <label for="nacionalidade">Nacionalidade:</label>
-    <select id="nacionalidade" [(ngModel)]="nacionalidadeSelecionada" name="nacionalidade">
+    <select id="nacionalidade" formControlName="nacionalidadeTS" name="nacionalidade">
       <option value="" disabled selected>Selecione sua nacionalidade</option>
       <option *ngFor="let pais of nacionalidades" [value]="pais">{{ pais }}</option>
     </select>
 
     <label>
-      <input type="checkbox" [(ngModel)]="aceitouTermos" name="aceitouTermos">
+      <input type="checkbox" formControlName="termosTS" name="aceitouTermos">
       Aceito os termos de uso
     </label>
 

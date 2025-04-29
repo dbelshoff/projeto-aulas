@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormControl,
@@ -18,14 +18,10 @@ import { Router } from '@angular/router';
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
-
 export class SignupComponent implements OnInit {
   selectedFile: File | null = null;
   previewUrl: string | ArrayBuffer | null = null;
   myForm!: FormGroup;
-  sexoSelecionado: string = '';
-  aceitouTermos: boolean = false;
-  nacionalidadeSelecionada: string = '';
 
   nacionalidades: string[] = [
     'Brasileiro',
@@ -51,9 +47,11 @@ export class SignupComponent implements OnInit {
         Validators.pattern('[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+'),
       ]),
       passwordTS: new FormControl(null, Validators.required),
+      sexoTS: new FormControl(null, Validators.required),     
+      nacionalidadeTS: new FormControl(null, Validators.required), 
+      termosTS: new FormControl(false, Validators.requiredTrue),  
     });
   }
-
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
@@ -68,20 +66,29 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.myForm.invalid) return;
-
-    const user = {
-      firstName: this.myForm.value.firstNameTS,
-      lastName: this.myForm.value.lastNameTS,
-      email: this.myForm.value.emailTS,
-      password: this.myForm.value.passwordTS,
-    };
-
-    this.authService.register(user).subscribe({
+    if (this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
+      return;
+    }
+  
+    const formData = new FormData();
+  
+    formData.append('firstName', this.myForm.value.firstNameTS);
+    formData.append('lastName', this.myForm.value.lastNameTS);
+    formData.append('email', this.myForm.value.emailTS);
+    formData.append('password', this.myForm.value.passwordTS);
+    formData.append('sexo', this.myForm.value.sexoTS);
+    formData.append('nacionalidade', this.myForm.value.nacionalidadeTS);
+  
+    // Se o usuário selecionou uma imagem, envia também
+    if (this.selectedFile) {
+      formData.append('fotoPerfil', this.selectedFile);
+    }
+  
+    this.authService.register(formData).subscribe({
       next: (response) => {
         console.log('Usuário cadastrado!', response);
         this.myForm.reset();
-
         this.router.navigate(['/autenticacao/signin']);
       },
       error: (error) => {
@@ -89,4 +96,5 @@ export class SignupComponent implements OnInit {
       },
     });
   }
+  
 }
