@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const path = require('path');
 const fs = require('fs');
+const jwt = require('jsonwebtoken')
 const router = express.Router();
 const upload = require('../middlewares/uploads');
 const User = require('../models/User');
@@ -59,14 +60,14 @@ router.post('/register', upload.single('fotoPerfil'), async (req, res) => {
             finalImagePath = 'resource/assets/default_indefinido.png';
         }
       }
-  
+    
       // Atualizar o pathImage com apenas um update
-      await User.findByIdAndUpdate(savedUser._id, { pathImage: finalImagePath });
+      await User.findByIdAndUpdate(savedUser._id, { imagePath: finalImagePath });
   
       res.status(201).json({
         message: 'Usuário criado com sucesso',
         userId: savedUser._id,
-        pathImage: finalImagePath,
+        imagePath: finalImagePath,
       });
   
     } catch (err) {
@@ -92,7 +93,7 @@ router.post('/login', async (req, res) => {
 
         res.json({ token, email: user.email }); 
     } catch (err) {
-        res.status(500).json({ message: 'Erro ao fazer login' });
+        res.status(500).json({ message: 'Erro ao fazer login' + err });
     }
 });
 

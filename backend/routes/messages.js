@@ -50,7 +50,8 @@ router.get('/', async (req, res) => {
             userId: message.author._id,
             username: `${message.author.firstName} ${message.author.lastName}`,
             email: message.author.email, 
-            createdAt: message.createdAt
+            createdAt: message.createdAt,
+            imagePath: message.author.imagePath
         }));
 
         res.json(messagesWithUserDetails);

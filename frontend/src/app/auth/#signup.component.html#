@@ -1,0 +1,81 @@
+<h1>SIGN UP</h1>
+<div class="col-md-8 col-md-offset-2">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">Nome:</label>
+      <input
+        type="text"
+        id="firstName"
+        class="form-control"
+        formControlName="firstNameTS"
+      />
+    </div>
+
+    @if(myForm.get('firstNameTS')?.errors?.['required'] &&
+    myForm.get('firstNameTS')?.touched) {
+    <div><p style="color: red">Nome obrigatório.</p></div>
+    }
+
+    <div class="form-group">
+      <label for="lastName">Sobrenome:</label>
+      <input
+        type="text"
+        id="lastName"
+        class="form-control"
+        formControlName="lastNameTS"
+      />
+    </div>
+
+    @if (myForm.get('lastNameTS')?.errors?.['required'] &&
+    myForm.get('lastNameTS')?.touched) {
+    <div><p style="color: red">SobreNome obrigatório.</p></div>
+    } @if (myForm.get('lastNameTS')?.errors?.['minlength'] &&
+    myForm.get('lastNameTS')?.touched) {
+    <div>
+      <p style="color: red">SobreNome deve ter no mínimo 4 caracteres.</p>
+    </div>
+    } @if (myForm.get('lastNameTS')?.errors?.['maxlength'] &&
+    myForm.get('lastNameTS')?.touched) {
+    <div>
+      <p style="color: red">SobreNome deve ter no máximo 16 caracteres.</p>
+    </div>
+    }
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="emailTS"
+      />
+    </div>
+
+    @if (myForm.get('emailTS')?.errors?.['required'] &&
+    myForm.get('emailTS')?.touched) {
+    <div><p style="color: red">e-mail obrigatório.</p></div>
+    } @if (myForm.get('emailTS')?.errors?.['pattern'] &&
+    myForm.get('emailTS')?.touched) {
+    <div><p style="color: red">e-mail inválido.</p></div>
+    }
+
+    <div class="form-group">
+      <label for="pass">Senha:</label>
+      <input
+        type="password"
+        id="pass"
+        class="form-control"
+        formControlName="passwordTS"
+      />
+    </div>
+
+    @if (myForm.get('passwordTS')?.errors?.['required'] &&
+    myForm.get('passwordTS')?.touched) {
+    <div><p style="color: red">Senha obrigatória.</p></div>
+    }
+    <br />
+    <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">
+      Cadastrar
+    </button>
+  </form>
+</div>
