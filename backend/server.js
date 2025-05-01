@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+const path = require('path')
 const authRoutes = require('./routes/auth');
 const messageRoutes = require('./routes/messages');
 
@@ -17,6 +17,7 @@ app.use(express.json());
 // Rotas
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
+app.use('/resource/img', express.static(path.join(__dirname, 'resource/img')));
 
 // Conexão com MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/forumDB', {

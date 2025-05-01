@@ -40,9 +40,8 @@ router.post('/', authenticateToken, async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const messages = await Message.find()
-            .populate('author', 'firstName lastName email') 
+            .populate('author', 'firstName lastName email imagePath') 
             .sort({ createdAt: -1 });
-
        
         const messagesWithUserDetails = messages.map(message => ({
             messageId: message._id,
