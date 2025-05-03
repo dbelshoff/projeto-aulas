@@ -12,7 +12,7 @@ import { MessageService } from './message.services';
   styleUrls: ['./message-signal.component.css'],
 })
 export class MessageComponentSignal {
-  @Input() messageVarClasse: Message = new Message('', '', '');
+  @Input() messageVarClasse: Message = new Message('', '', '', '');
   @Output() messageDeleted = new EventEmitter<void>();
 
   messageClassContent: any;
@@ -21,6 +21,7 @@ export class MessageComponentSignal {
   currentUserEmail: string | null = localStorage.getItem('email');
   isEditing = false;
   editedMessageContent: string = '';
+  messageClassUserImage: string = '';
 
   constructor(private messageService: MessageService) {}
 
@@ -28,7 +29,9 @@ export class MessageComponentSignal {
     this.messageClassContent = this.messageVarClasse.content;
     this.messageClassUser = this.messageVarClasse.username;
     this.messageClassEmail = this.messageVarClasse.email;
-    this.editedMessageContent = this.messageClassContent;
+    this.editedMessageContent = this.messageClassContent;7
+    this.messageClassUserImage = 'http://localhost:5000/' + this.messageVarClasse.imagePath
+
   }
 
   onEdit() {

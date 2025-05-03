@@ -38,8 +38,19 @@ article.panel {
 
 /* Estilo para o nome do autor */
 .author {
+  display: flex;
+  align-items: center;               /* Alinha verticalmente */
+  gap: 16px;                         /* Espaçamento entre texto e imagem */
   font-weight: bold;
   color: #2d3e50;
+}
+
+.author img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;               /* deixa a imagem redonda */
+  border: 2px solid #ccc;
 }
 
 /* Estilo para os links de editar e deletar */

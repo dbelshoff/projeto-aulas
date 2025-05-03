@@ -22,6 +22,7 @@ export class MessageService {
   getMessages(): void {
     this.http.get<Message[]>(this.apiUrl).subscribe(
       (messages) => {
+        console.log('Mensagens recebidas do backend:', messages);
         this.messagesSubject.next(messages);
       },
       (error) => {
