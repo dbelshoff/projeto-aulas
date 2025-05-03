@@ -9,10 +9,10 @@ const User = require('../models/User');
 
 router.post('/register', upload.single('fotoPerfil'), async (req, res) => {
     try {
-      // Agora os campos vêm de req.body (porque o FormData envia como campos "textuais" + "arquivo")
+      
       const { firstName, lastName, email, password, sexo, nacionalidade } = req.body;
   
-      // Validação extra básica (opcional, mas recomendado)
+     
       if (!firstName || !lastName || !email || !password || !sexo || !nacionalidade) {
         return res.status(400).json({ message: 'Preencha todos os campos obrigatórios.' });
       }
@@ -33,7 +33,7 @@ router.post('/register', upload.single('fotoPerfil'), async (req, res) => {
         nacionalidade,
       });
   
-      const savedUser = await newUser.save(); // primeiro save para pegar o ID
+      const savedUser = await newUser.save(); 
   
       let finalImagePath;
   
@@ -42,13 +42,13 @@ router.post('/register', upload.single('fotoPerfil'), async (req, res) => {
         const newFilename = `user_${savedUser._id}${ext}`;
         const finalPath = path.join(__dirname, '../resource/img', newFilename);
   
-        // Mover e renomear o arquivo
+      
         fs.renameSync(req.file.path, finalPath);
   
-        // Atualiza caminho relativo salvo no banco
+       
         finalImagePath = `resource/img/${newFilename}`;
       } else {
-        // Define imagem padrão conforme sexo
+        
         switch (sexo) {
           case 'Masculino':
             finalImagePath = 'resource/assets/default_masculino.png';
@@ -59,9 +59,12 @@ router.post('/register', upload.single('fotoPerfil'), async (req, res) => {
           default:
             finalImagePath = 'resource/assets/default_indefinido.png';
         }
+
+         
+            
       }
     
-      // Atualizar o pathImage com apenas um update
+     
       await User.findByIdAndUpdate(savedUser._id, { imagePath: finalImagePath });
   
       res.status(201).json({

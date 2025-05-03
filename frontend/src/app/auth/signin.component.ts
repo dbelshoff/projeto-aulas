@@ -74,7 +74,7 @@ export class SigninComponent implements OnInit {
 
           setTimeout(() => {
             this.errorMessage = null;
-          }, 5000); // limpa depois de 5 segundos
+          }, 5000);
         }
       );
     }

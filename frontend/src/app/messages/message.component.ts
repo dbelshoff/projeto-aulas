@@ -14,10 +14,4 @@ export class MessageComponent {
   @Input() messageVarClasse: Message = new Message('', '');
 
   @Output() outputMessage = new EventEmitter<string>();
-
-  onEdit() {
-    this.outputMessage.emit(
-      'Texto retornado: Venho de mesage (child) para o app (pai)'
-    );
-  }
 }

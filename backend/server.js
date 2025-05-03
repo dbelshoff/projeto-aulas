@@ -5,7 +5,7 @@ const path = require('path')
 const authRoutes = require('./routes/auth');
 const messageRoutes = require('./routes/messages');
 
-require('dotenv').config(); // Para variáveis de ambiente
+require('dotenv').config(); 
 
 const app = express();
 const PORT = process.env.PORT || 5000;

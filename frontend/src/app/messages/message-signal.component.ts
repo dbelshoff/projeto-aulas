@@ -29,9 +29,22 @@ export class MessageComponentSignal {
     this.messageClassContent = this.messageVarClasse.content;
     this.messageClassUser = this.messageVarClasse.username;
     this.messageClassEmail = this.messageVarClasse.email;
-    this.editedMessageContent = this.messageClassContent;7
-    this.messageClassUserImage = 'http://localhost:5000/' + this.messageVarClasse.imagePath
+    this.editedMessageContent = this.messageClassContent;
 
+    const imagePath = this.messageVarClasse.imagePath;
+
+    if (
+      imagePath &&
+      (imagePath.includes('default_masculino.png') ||
+        imagePath.includes('default_feminino.png') ||
+        imagePath.includes('default_indefinido.png'))
+    ) {
+      this.messageClassUserImage = 'assets/' + imagePath.split('/').pop();
+    } else if (imagePath) {
+      this.messageClassUserImage = 'http://localhost:5000/' + imagePath;
+    } else {
+      this.messageClassUserImage = '/assets/default_indefinido.png';
+    }
   }
 
   onEdit() {

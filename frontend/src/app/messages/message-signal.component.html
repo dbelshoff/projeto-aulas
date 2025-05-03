@@ -15,8 +15,8 @@
 
   <footer class="panel-footer">
     <div class="author">
+      <img [src]="messageClassUserImage" alt="Avatar do usuário" />
       {{ messageClassUser }}
-      <img [src]="messageClassUserImage" alt="Avatar do usuário"/>
     </div>
     <div class="config" *ngIf="isOwnerOfMessage()">
       <a (click)="onEdit()">Edit</a>
